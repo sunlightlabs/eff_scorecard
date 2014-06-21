@@ -18,7 +18,7 @@ def main(out_filename):
 
 	# voted for House version of USA FREEDOM [hr3361-113](roll id: h230-2014) (-3)
 	print 'checking votes on House version of USA FREEDOM...'
-	sc.voted_aye({'voted for House version of USA Freedom': -3}, ['h230-2014'])
+	sc.voted_for({'voted for House version of USA Freedom': -3}, ['h230-2014'])
 	
 	# sponsor/cosponsor of FISA Improvements Act [s1631-113] (-4)
 	print 'checking sponsor/cosponsors of FISA Improvements Act...'
@@ -31,7 +31,7 @@ def main(out_filename):
 
 	# Conyers-Amash Amendment amendment: [hamdt413-113] vote: [h412-2013] (vote +4)
 	print 'checking votes on Conyers/Amash amendment...'
-	sc.voted_aye({'voted for Conyers/Amash amendment': 4}, ['h412-2013'])
+	sc.voted_for({'voted for Conyers/Amash amendment': 4}, ['h412-2013'])
 
 	# sponsor/cosponsor of FISA Transparency & Modernization Act (Rogers/MI) [hr4291-113] (cosponsor -4)
 	print 'checking sponsor/cosponsors of FISA Transparency & Modernization Act (Rogers bill)...'
@@ -39,15 +39,15 @@ def main(out_filename):
 
 	# Reauthorizing Section 215 of the Patriot Act (vote(?) -.5)
 	print 'checking votes on USA PATRIOT section 215 reauthorization...'
-	sc.voted_aye({'voted for reauthorization of USA PATRIOT section 215': -0.5}, ['s19-2011', 'h36-2011'])
+	sc.voted_for({'voted for reauthorization of USA PATRIOT section 215': -0.5}, ['s19-2011', 'h36-2011'])
 
 	# Voted to reauthorize FISA Amendments Act [hr5949-112] roll IDS [s236-2012, h569-2012] (vote(?) -.5)
 	print 'checking votes on reauthorization of FISA Amendments Act...'
-	sc.voted_aye({'voted for reauthorization of FISA Amendments Act': -0.5}, ['s236-2012', 'h569-2012'])
+	sc.voted_for({'voted for reauthorization of FISA Amendments Act': -0.5}, ['s236-2012', 'h569-2012'])
 
 	# voted for Massie-Lofgren amendment
 	# print 'checking votes on Massie-Lofgren amendment...'
-	# sc.voted_aye({'voted for Massie-Lofgren amendment': 0.5}, ['h327-2014'])
+	# sc.voted_for({'voted for Massie-Lofgren amendment': 0.5}, ['h327-2014'])
 
 	print 'writing results...'
 	f = open(out_filename, 'w')

@@ -45,7 +45,7 @@ class LegislativeScorecard(object):
 	def _get_adjustment_desc(self, score_adjustment):
 		return score_adjustment.items()[0]
 		
-	def voted_aye(self, score_adjustment, roll_ids):
+	def voted_for(self, score_adjustment, roll_ids):
 		""" Checks for aye votes on one or more roll call votes """
 		(adjustment_desc, adjustment) = self._get_adjustment_desc(score_adjustment)
 		
