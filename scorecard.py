@@ -18,7 +18,6 @@ class Scorecard(object):
 		self.legislator_metadata = {}
 
 		# grab bioguides
-		print 'Collecting legislators...'
 		for (varname, chamber) in ((self.senators, 'senate'), (self.representatives, 'house')):
 			i = 0
 			while True:
@@ -26,7 +25,7 @@ class Scorecard(object):
 				if new_reps is None:
 					break
 				for nr in new_reps:
-					bioguide = nr.get('bioguide_id')
+					bioguide = nr['bioguide_id']
 					varname.append(bioguide)
 
 					self.legislator_metadata[bioguide] = {}
@@ -54,8 +53,9 @@ class Scorecard(object):
 			votes = congress.votes(roll_id=roll_id, fields='voters')	
 			
 			for legislator in self.scores:
-				score = 0
-				if votes[0]['voters'].get('legislator', {}).get('vote') == 'Aye':
+				score = 0							
+				print votes[0]['voters'].get(legislator, {'vote': 'not present in data'})['vote']
+				if votes[0]['voters'].get(legislator, {'vote': 'not present in data'})['vote'].lower().strip() == 'yea':
 					score = adjustment
 				self.scores[legislator]['%s (%s%s)' % (adjustment_desc, (adjustment > 0) and '+' or '', adjustment)] = score		
 
@@ -66,9 +66,9 @@ class Scorecard(object):
 
 		bill = congress.bills(bill_id=bill_id, fields='cosponsor_ids,sponsor_id')[0]
 		cosponsors = congress.bills(bill_id=bill_id, fields='cosponsors')
-		valid_sponsor_cosponsor_ids = [bill.get('sponsor_id')]
+		valid_sponsor_cosponsor_ids = [bill['sponsor_id']]
 		
-		for cs in cosponsors[0].get('cosponsors'):
+		for cs in cosponsors[0]['cosponsors']:
 			if cosponsorship_test(cs):
 				valid_sponsor_cosponsor_ids.append(cs['legislator']['bioguide_id'])
 		
@@ -80,8 +80,6 @@ class Scorecard(object):
 		
 
 	def write(self, out_f):
-		print 'Writing file...'
-
 		writer = unicodecsv.writer(out_f)
 		
 		# figure out what we've actually recorded here
@@ -109,10 +107,9 @@ class Scorecard(object):
 
 			writer.writerow(out_row)
 
-		print 'Done.'
-
 
 def main(out_filename):
+	print 'collecting legislators...'
 	sc = Scorecard()	
 
 	# sponsor/cosponsor of Surveillance State Repeal Act [hr2818-113] (+4)
@@ -156,7 +153,7 @@ def main(out_filename):
 	# print 'checking votes on Massie-Lofgren amendment...'
 	# sc.voted_aye({'voted for Massie-Lofgren amendment': 0.5}, ['h327-2014'])
 
-	print 'writing results'
+	print 'writing results...'
 	f = open(out_filename, 'w')
 	sc.write(f)
 	f.close()
