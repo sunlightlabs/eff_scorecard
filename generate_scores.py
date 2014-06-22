@@ -46,8 +46,8 @@ def main(out_filename):
 	sc.voted_for({'voted for reauthorization of FISA Amendments Act': -0.5}, ['s236-2012', 'h569-2012'])
 
 	# voted for Massie-Lofgren amendment
-	# print 'checking votes on Massie-Lofgren amendment...'
-	# sc.voted_for({'voted for Massie-Lofgren amendment': 0.5}, ['h327-2014'])
+	print 'checking votes on Massie-Lofgren amendment...'
+	sc.voted_for({'voted for Massie-Lofgren amendment': 3}, ['h327-2014'])
 
 	print 'writing results...'
 	f = open(out_filename, 'w')
