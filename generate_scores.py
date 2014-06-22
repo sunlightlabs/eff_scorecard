@@ -49,6 +49,14 @@ def main(out_filename):
 	print 'checking votes on Massie-Lofgren amendment...'
 	sc.voted_for({'voted for Massie-Lofgren amendment': 3}, ['h327-2014'])
 
+	# sponsor/cosponsor of FISA Court Reform Act
+	print 'checking sponsor/cosponsors of FISA Court Reform Act...'
+	sc.cosponsored({'sponsor/cosponsor of FISA Court Reform Act': 2}, 's1467-113')
+
+	# sponsor/cosponsor of Surveillance Transparency Act of 2013
+	print 'checking sponsor/cosponsors of Surveillance Transparency Act of 2013...'
+	sc.cosponsored({'sponsor/cosponsor of Surveillance Transparency Act of 2013': 1}, 's1452-113')
+
 	print 'writing results...'
 	f = open(out_filename, 'w')
 	sc.write(f)
