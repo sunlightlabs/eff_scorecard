@@ -24,10 +24,10 @@ def main(out_filename):
 	print 'checking sponsor/cosponsors of FISA Improvements Act...'
 	sc.cosponsored({'sponsor/cosponsor of FISA Improvements Act': -4}, 's1631-113')
 
-	# cosponsored House version of USA Freedom on or before 5/18/2014 (+3)
+	# cosponsored House version of USA Freedom on or before 5/18/2014 (+4)
 	print 'checking sponsor/cosponsors of USA FREEDOM prior to 2014-05-18...'
 	cosponsorship_cutoff_date = datetime.datetime(2014, 5, 18)
-	sc.cosponsored({'sponsor/cosponsor of USA FREEDOM prior to 2014-05-18': 3}, 'hr3361-113', lambda x: datetime.datetime.strptime(x['sponsored_on'], '%Y-%m-%d') <= cosponsorship_cutoff_date)	
+	sc.cosponsored({'sponsor/cosponsor of USA FREEDOM prior to 2014-05-18': 4}, 'hr3361-113', lambda x: datetime.datetime.strptime(x['sponsored_on'], '%Y-%m-%d') <= cosponsorship_cutoff_date)	
 
 	# Conyers-Amash Amendment amendment: [hamdt413-113] vote: [h412-2013] (vote +4)
 	print 'checking votes on Conyers/Amash amendment...'
