@@ -37,25 +37,25 @@ def main(out_filename):
 	print 'checking sponsor/cosponsors of FISA Transparency & Modernization Act (Rogers bill)...'
 	sc.cosponsored({'sponsor/cosponsor of FISA Transparency & Modernization Act': -4}, 'hr4291-113')	
 
-	# Reauthorizing Section 215 of the Patriot Act (vote(?) -.5)
-	print 'checking votes on USA PATRIOT section 215 reauthorization...'
-	sc.voted_for({'voted for reauthorization of USA PATRIOT section 215': -0.5}, ['s19-2011', 'h36-2011'])
+	# # Reauthorizing Section 215 of the Patriot Act (vote(?) -.5)
+	# print 'checking votes on USA PATRIOT section 215 reauthorization...'
+	# sc.voted_for({'voted for reauthorization of USA PATRIOT section 215': -0.5}, ['s19-2011', 'h36-2011'])
 
-	# Voted to reauthorize FISA Amendments Act [hr5949-112] roll IDS [s236-2012, h569-2012] (vote(?) -.5)
-	print 'checking votes on reauthorization of FISA Amendments Act...'
-	sc.voted_for({'voted for reauthorization of FISA Amendments Act': -0.5}, ['s236-2012', 'h569-2012'])
+	# # Voted to reauthorize FISA Amendments Act [hr5949-112] roll IDS [s236-2012, h569-2012] (vote(?) -.5)
+	# print 'checking votes on reauthorization of FISA Amendments Act...'
+	# sc.voted_for({'voted for reauthorization of FISA Amendments Act': -0.5}, ['s236-2012', 'h569-2012'])
 
 	# voted for Massie-Lofgren amendment
 	print 'checking votes on Massie-Lofgren amendment...'
 	sc.voted_for({'voted for Massie-Lofgren amendment': 3}, ['h327-2014'])
 
-	# sponsor/cosponsor of FISA Court Reform Act
-	print 'checking sponsor/cosponsors of FISA Court Reform Act...'
-	sc.cosponsored({'sponsor/cosponsor of FISA Court Reform Act': 2}, 's1467-113')
+	# # sponsor/cosponsor of FISA Court Reform Act
+	# print 'checking sponsor/cosponsors of FISA Court Reform Act...'
+	# sc.cosponsored({'sponsor/cosponsor of FISA Court Reform Act': 2}, 's1467-113')
 
-	# sponsor/cosponsor of Surveillance Transparency Act of 2013
-	print 'checking sponsor/cosponsors of Surveillance Transparency Act of 2013...'
-	sc.cosponsored({'sponsor/cosponsor of Surveillance Transparency Act of 2013': 1}, 's1452-113')
+	# # sponsor/cosponsor of Surveillance Transparency Act of 2013
+	# print 'checking sponsor/cosponsors of Surveillance Transparency Act of 2013...'
+	# sc.cosponsored({'sponsor/cosponsor of Surveillance Transparency Act of 2013': 1}, 's1452-113')
 
 	print 'writing results...'
 	f = open(out_filename, 'w')
