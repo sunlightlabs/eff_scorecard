@@ -15,6 +15,8 @@ class LegislativeScorecard(object):
 		self.senators = []   
 		self.scores = {}
 
+		self.grades = {}
+
 		self.legislator_metadata = {}
 
 		# grab bioguides
@@ -59,6 +61,10 @@ class LegislativeScorecard(object):
 				self.scores[legislator]['%s (%s%s)' % (adjustment_desc, (adjustment > 0) and '+' or '', adjustment)] = score		
 
 
+	def apply_grading(self, scoring_func):
+		for bioguide in self.scores:
+			self.grades[bioguide] = scoring_func(self.legislator_metadata[bioguide], self.scores[bioguide])
+
 	def cosponsored(self, score_adjustment, bill_id, cosponsorship_test=lambda x: True):
 		""" Tests whether each legislator sponsored or cosponsored a bill, with optional test """
 		(adjustment_desc, adjustment) = self._get_adjustment_desc(score_adjustment)
@@ -81,6 +87,8 @@ class LegislativeScorecard(object):
 	def write(self, out_f):
 		writer = unicodecsv.writer(out_f)
 		
+		do_grades = len(self.grades.keys()) > 0
+
 		# figure out what we've actually recorded here
 		fields_to_emit = {}
 		for l in self.scores:
@@ -88,7 +96,7 @@ class LegislativeScorecard(object):
 				fields_to_emit[k] = True
 		fields_to_emit = sorted(fields_to_emit.keys())
 
-		writer.writerow(['bioguide_id'] + fields_to_emit + ['total'] + LegislativeScorecard.FIELDS_TO_COLLECT)
+		writer.writerow(['bioguide_id'] + fields_to_emit + (do_grades and ['total', 'grade'] or ['total']) + LegislativeScorecard.FIELDS_TO_COLLECT)
 
 		# tabulate data
 		for bioguide_id in sorted(self.scores):
@@ -100,6 +108,9 @@ class LegislativeScorecard(object):
 				total = total + value
 
 			out_row.append(total)
+
+			if do_grades:
+				out_row.append(self.grades[bioguide_id])
 			
 			for field in LegislativeScorecard.FIELDS_TO_COLLECT:
 				out_row.append(self.legislator_metadata[bioguide_id][field])

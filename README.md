@@ -1,4 +1,4 @@
-legislative_scorecard
+eff_scorecard
 =====================
 
-Simple script to calculate scores for legislators based on voting/sponsorship criteria
+Simple script to calculate scores for legislators based on voting/sponsorship criteria.

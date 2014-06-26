@@ -4,6 +4,39 @@ import argparse
 import datetime
 import legislativescorecard
 
+def grading_func(legislator, scores):
+	# if a senator who hasn't cosponsored any of these bills, return '?'
+	if legislator['title'].lower()=='sen':
+		no_cosponsorships = True
+		for field in scores:
+			if 'cosponsor' in field.lower() and int(scores[field]) > 0:
+				no_cosponsorships = False
+		if no_cosponsorships:
+			return '?'
+
+	# sum the individual scores so we can emit a grade
+	score = 0
+	for (s, val) in scores.items():
+		score = score + val
+
+	# otherwise, apply normal scoring
+	if score >= 4:
+		return 'A'
+	elif score >= 3.5:
+		return 'B+'
+	elif score >= 3:
+		return 'B'
+	elif score >= 2.5:
+		return 'C+'
+	elif score >= 2:
+		return 'C'
+	elif score >= 1.5:
+		return 'D+'
+	elif score >=1:
+		return 'D'
+	else:
+		return 'F'
+
 def main(out_filename):
 	print 'collecting legislators...'
 	sc = legislativescorecard.LegislativeScorecard()	
@@ -56,6 +89,9 @@ def main(out_filename):
 	# # sponsor/cosponsor of Surveillance Transparency Act of 2013
 	# print 'checking sponsor/cosponsors of Surveillance Transparency Act of 2013...'
 	# sc.cosponsored({'sponsor/cosponsor of Surveillance Transparency Act of 2013': 1}, 's1452-113')
+
+	# apply grading
+	sc.apply_grading(grading_func)
 
 	print 'writing results...'
 	f = open(out_filename, 'w')
