@@ -5,6 +5,10 @@ import datetime
 import legislativescorecard
 
 def grading_func(legislator, scores):
+	# return n/a for nonvoting delegates
+	if legislator['title'].lower()=='del':
+		return 'N/A'
+
 	# if a senator who hasn't cosponsored any of these bills, return '?'
 	if legislator['title'].lower()=='sen':
 		no_cosponsorships = True
@@ -51,7 +55,7 @@ def main(out_filename):
 
 	# voted for House version of USA FREEDOM [hr3361-113](roll id: h230-2014) (-3)
 	print 'checking votes on House version of USA FREEDOM...'
-	sc.voted_for({'voted for House version of USA Freedom': -3}, ['h230-2014'])
+	sc.voted_for({'voted for House version of USA Freedom': -2}, ['h230-2014'])
 	
 	# sponsor/cosponsor of FISA Improvements Act [s1631-113] (-4)
 	print 'checking sponsor/cosponsors of FISA Improvements Act...'
