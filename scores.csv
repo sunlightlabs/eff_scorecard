@@ -161,7 +161,7 @@ F000451,0,0,0,0,4,4,0,3,11,A,Rep,Michael,Fitzpatrick,R,PA,8,RepFitzpatrick,RepFi
 F000454,0,0,0,0,0,0,0,3,3,B,Rep,Bill,Foster,D,IL,11,RepBillFoster,RepBillFoster,102918290599
 F000455,0,0,0,0,0,4,-2,0,2,C,Rep,Marcia,Fudge,D,OH,11,RepMarciaFudge,marcialfudge,279006440801
 F000456,0,0,0,0,4,4,0,3,11,A,Rep,John,Fleming,R,LA,4,RepFleming,larep04,372154186772
-F000457,0,0,0,0,0,0,0,0,0,?,Sen,Alan,Franken,D,MN,,,SenatorFranken,
+F000457,0,0,4,0,0,0,0,0,0,4,A,Sen,Alan,Franken,D,MN,,,SenatorFranken,
 F000458,0,0,0,0,0,4,-2,3,5,A,Rep,Stephen,Fincher,R,TN,8,RepFincherTN08,CongressmanFincher,128861763849209
 F000459,0,0,0,0,0,4,-2,3,5,A,Rep,Charles,Fleischmann,R,TN,3,RepChuck,repchuck,189998554345168
 F000460,0,0,0,0,4,4,-2,3,9,A,Rep,Blake,Farenthold,R,TX,27,Farenthold,BlakeFarenthold,186894244673001
