@@ -53,6 +53,10 @@ def main(out_filename):
 	print 'checking sponsor/cosponsors of Senate version of USA FREEDOM...'
 	sc.cosponsored({'sponsor/cosponsor of Senate version of USA FREEDOM': 4}, 's1599-113')
 
+	# sponsor/cosponsor of new version of Senate USA FREEDOM [s2685-113] (+4)
+	print 'checking sponsor/cosponsors of July 2014 Senate version of USA FREEDOM...'
+	sc.cosponsored({'sponsor/cosponsor of July 2014 Senate version of USA FREEDOM': 4}, 's2685-113')
+
 	# voted for House version of USA FREEDOM [hr3361-113](roll id: h230-2014) (-3)
 	print 'checking votes on House version of USA FREEDOM...'
 	sc.voted_for({'voted for House version of USA Freedom': -2}, ['h230-2014'])
